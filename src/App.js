@@ -1,7 +1,8 @@
 import React from "react";
+import LandingPage from "./components/pages/LandingPage";
 
 function App() {
-  return <div className="text-green text-4xl text-center">hello world</div>;
+  return <LandingPage />;
 }
 
 export default App;
