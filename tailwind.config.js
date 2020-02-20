@@ -12,7 +12,17 @@ module.exports = {
     },
     colors: {
       green: "#419D78",
-      white: "#fff"
+      white: "#fff",
+      black: "#000",
+      gray: {
+        300: "#909090",
+        900: "#242424",
+        transparent: "rgba(0, 0, 0, 0.42)"
+      },
+      blue: {
+        dark: "#1356A4",
+        light: "#4A90E2"
+      }
     }
   },
   variants: {},

@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import hero from "../../assets/jibleecover.png";
 import { ReactComponent as Logo } from "../../assets/logo-white.svg";
 import { ReactComponent as Home } from "../../assets/home.svg";
 import { ReactComponent as Helmet } from "../../assets/helmet.svg";
 import { ReactComponent as WhiteArrow } from "../../assets/arrow-white.svg";
 import { ReactComponent as BlackArrow } from "../../assets/arrow-black.svg";
+import Modal from "../Modal";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggle() {
+    setIsOpen(!isOpen);
+  }
   return (
     <header
       style={{
@@ -20,7 +26,11 @@ const Header = () => {
             <Logo />
           </div>
           <div>
-            <button type="button" className="py-1 px-4 bg-white rounded">
+            <button
+              type="button"
+              className="py-1 px-4 bg-white rounded"
+              onClick={toggle}
+            >
               Login
             </button>
           </div>
@@ -48,6 +58,20 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {isOpen && (
+        <Modal toggle={toggle}>
+          <h1 className="text-4xl">Login</h1>
+          <p className="text-gray-300 text-lg">
+            Welcome Back to Jible Services
+          </p>
+          <button
+            type="button"
+            className="bg-blue-dark rounded text-white px-4 py-2 mt-4"
+          >
+            Login with Facebook
+          </button>
+        </Modal>
+      )}
     </header>
   );
 };
