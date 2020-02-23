@@ -4,8 +4,8 @@ import { ReactComponent as Burger } from "../../assets/burger.svg";
 import { ReactComponent as Bell } from "../../assets/bell.svg";
 
 const DashboardHeader = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [switchIsOn, setSwitchIsOn] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [switchIsOn, setSwitchIsOn] = useState(true);
 
   function toggle() {
     setIsOpen(!isOpen);
@@ -68,9 +68,13 @@ const DashboardHeader = () => {
           <div className="mt-20 px-6">
             <p className="text-white text-lg">Availability</p>
             <div
-              className="border border-white h-8 w-20 rounded-full mt-5"
+              className="border border-white h-8 w-20 rounded-full mt-5 relative"
               onClick={() => setSwitchIsOn(!switchIsOn)}
             >
+              <div className="absolute inset-0 p-2 flex justify-between items-center">
+                <span className="text-white text-xs">On</span>
+                <span className="text-white text-xs">Off</span>
+              </div>
               <div
                 className={`bg-white rounded-full h-8 w-8 ${
                   switchIsOn ? "float-right" : "float-left"
