@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { ReactComponent as Logo } from "../../assets/logo-black.svg";
 import { ReactComponent as Burger } from "../../assets/burger.svg";
 import { ReactComponent as Bell } from "../../assets/bell.svg";
+import { NavLink } from "react-router-dom";
 
 const DashboardHeader = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [switchIsOn, setSwitchIsOn] = useState(true);
 
   function toggle() {
@@ -12,7 +13,7 @@ const DashboardHeader = () => {
   }
 
   return (
-    <div className="h-screen w-screen">
+    <div className="w-screen">
       <header className="py-6 px-4 flex items-center justify-between">
         <div>
           <Logo className="h-6 w-auto" />
@@ -46,24 +47,25 @@ const DashboardHeader = () => {
             <span className="text-white ml-4 text-xl">Tania Smith</span>
           </div>
           <div className="mt-10 flex flex-col">
-            <a
-              href="/#"
+            <NavLink
+              to="/"
               className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
             >
               Sekhrat TODO
-            </a>
-            <a
-              href="/#"
+            </NavLink>
+            <NavLink
+              to="/profile"
               className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
+              activeClassName="bg-white text-black"
             >
               My Profile
-            </a>
-            <a
-              href="/#"
+            </NavLink>
+            <NavLink
+              to="/statistics"
               className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
             >
               Statistics
-            </a>
+            </NavLink>
           </div>
           <div className="mt-20 px-6">
             <p className="text-white text-lg">Availability</p>
