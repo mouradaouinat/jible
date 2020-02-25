@@ -37,7 +37,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="sm:w-64 md:w-56 lg:w-72 sm:mr-auto md:mx-auto">
+    <>
       <div className="mb-8 flex items-center">
         <img
           src={user.img}
@@ -95,14 +95,16 @@ const Profile = () => {
             />
           </div>
         </div>
-        <button
-          type="submit"
-          className="px-6 py-3 text-white bg-blue-light w-full rounded mt-6"
-        >
-          Update
-        </button>
+        <div className="text-right">
+          <button
+            type="submit"
+            className="px-6 py-3 text-white bg-blue-light w-full rounded mt-6 lg:w-auto lg:px-16 lg:py-2"
+          >
+            Update
+          </button>
+        </div>
       </form>
-    </div>
+    </>
   );
 };
 
