@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ReactComponent as Logo } from "../../assets/logo-black.svg";
 import { ReactComponent as Burger } from "../../assets/burger.svg";
 import { ReactComponent as Bell } from "../../assets/bell.svg";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
 
 const DashboardHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [switchIsOn, setSwitchIsOn] = useState(true);
+  const { user } = useContext(UserContext);
 
   function toggle() {
     setIsOpen(!isOpen);
@@ -40,50 +42,76 @@ const DashboardHeader = () => {
           </div>
           <div className="flex items-center mt-10">
             <img
-              src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80"
+              src={user.img}
               alt="profile"
               className="rounded-full w-10 h-10 object-cover object-center"
             />
-            <span className="text-white ml-4 text-xl">Tania Smith</span>
+            <span className="text-white ml-4 text-xl">{user.name}</span>
           </div>
-          <div className="mt-10 flex flex-col">
-            <NavLink
-              to="/"
-              className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
-            >
-              Sekhrat TODO
-            </NavLink>
-            <NavLink
-              to="/profile"
-              className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
-              activeClassName="bg-white text-black"
-            >
-              My Profile
-            </NavLink>
-            <NavLink
-              to="/statistics"
-              className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
-            >
-              Statistics
-            </NavLink>
-          </div>
-          <div className="mt-20 px-6">
-            <p className="text-white text-lg">Availability</p>
-            <div
-              className="border border-white h-8 w-20 rounded-full mt-5 relative"
-              onClick={() => setSwitchIsOn(!switchIsOn)}
-            >
-              <div className="absolute inset-0 p-2 flex justify-between items-center">
-                <span className="text-white text-xs">On</span>
-                <span className="text-white text-xs">Off</span>
-              </div>
-              <div
-                className={`bg-white rounded-full h-8 w-8 ${
-                  switchIsOn ? "float-right" : "float-left"
-                } shadow-md`}
-              ></div>
+          {user.role === "driver" ? (
+            <div className="mt-10 flex flex-col">
+              <NavLink
+                to="/"
+                className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
+              >
+                Sekhrat TODO
+              </NavLink>
+              <NavLink
+                to="/profile"
+                className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
+                activeClassName="bg-white text-black"
+              >
+                My Profile
+              </NavLink>
+              <NavLink
+                to="/statistics"
+                className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
+              >
+                Statistics
+              </NavLink>
             </div>
-          </div>
+          ) : (
+            <div className="mt-10 flex flex-col">
+              <NavLink
+                to="/"
+                className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
+              >
+                My Sekhra
+              </NavLink>
+              <NavLink
+                to="/profile"
+                className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
+                activeClassName="bg-white text-black"
+              >
+                My Profile
+              </NavLink>
+              <NavLink
+                to="/statistics"
+                className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md"
+              >
+                My Adresses
+              </NavLink>
+            </div>
+          )}
+          {user.role === "driver" ? (
+            <div className="mt-20 px-6">
+              <p className="text-white text-lg">Availability</p>
+              <div
+                className="border border-white h-8 w-20 rounded-full mt-5 relative"
+                onClick={() => setSwitchIsOn(!switchIsOn)}
+              >
+                <div className="absolute inset-0 p-2 flex justify-between items-center">
+                  <span className="text-white text-xs">On</span>
+                  <span className="text-white text-xs">Off</span>
+                </div>
+                <div
+                  className={`bg-white rounded-full h-8 w-8 ${
+                    switchIsOn ? "float-right" : "float-left"
+                  } shadow-md`}
+                ></div>
+              </div>
+            </div>
+          ) : null}
         </div>
       )}
     </div>

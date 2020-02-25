@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ReactComponent as Phone } from "../assets/phone.svg";
 import { ReactComponent as User } from "../assets/user.svg";
 import { ReactComponent as Mail } from "../assets/mail.svg";
+import { UserContext } from "../context/userContext";
 
 const Profile = () => {
+  const { user, setUser } = useContext(UserContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    setName(user.name);
+    setEmail(user.email);
+    setPhone(user.phone);
+  }, [user.name, user.phone, user.email]);
+
+  function changeName(e) {
+    setName(e.target.value);
+  }
+
+  function changeEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function changePhone(e) {
+    setPhone(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    setUser(previousValue => {
+      return { ...previousValue, name, phone, email };
+    });
+  }
+
   return (
     <div className="px-4">
-      <form className="mt-10">
+      <form className="mt-10" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name" className="text-gray-300">
             Full Name
@@ -16,7 +48,8 @@ const Profile = () => {
             <input
               id="name"
               type="text"
-              value="Tania Smith"
+              value={name}
+              onChange={changeName}
               className="text-lg"
             />
           </div>
@@ -30,7 +63,8 @@ const Profile = () => {
             <input
               id="email"
               type="text"
-              value="Tania@gmail.com"
+              value={email}
+              onChange={changeEmail}
               className="text-lg"
             />
           </div>
@@ -44,7 +78,8 @@ const Profile = () => {
             <input
               id="phone"
               type="text"
-              value="+212690092625"
+              value={phone}
+              onChange={changePhone}
               className="text-lg"
             />
           </div>
