@@ -37,8 +37,8 @@ const Profile = () => {
   }
 
   return (
-    <div className="px-4">
-      <form className="mt-10" onSubmit={handleSubmit}>
+    <div className="px-4 w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md md:mx-auto">
+      <form className="mt-10 w-full" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name" className="text-gray-300">
             Full Name

@@ -99,7 +99,8 @@ const Header = ({ history }) => {
                 email: "tania@gmail.com",
                 phone: "+212690092625",
                 img:
-                  "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80"
+                  "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
+                isAvailable: true
               })
             }
             className="bg-blue-dark rounded text-white px-4 py-2 mt-4 w-full flex items-center"
