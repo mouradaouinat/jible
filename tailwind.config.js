@@ -3,6 +3,9 @@ module.exports = {
     extend: {
       margin: {
         "-57": "-202px"
+      },
+      spacing: {
+        "72": "24rem"
       }
     },
     fontFamily: {
@@ -15,6 +18,7 @@ module.exports = {
       white: "#fff",
       black: "#000",
       gray: {
+        100: "#E5E5E5",
         300: "#909090",
         900: "#242424",
         transparent: "rgba(0, 0, 0, 0.42)"

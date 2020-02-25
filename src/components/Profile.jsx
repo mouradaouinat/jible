@@ -37,13 +37,24 @@ const Profile = () => {
   }
 
   return (
-    <div className="px-4 w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md md:mx-auto">
-      <form className="mt-10 w-full" onSubmit={handleSubmit}>
+    <div className="sm:w-64 md:w-56 lg:w-72 sm:mr-auto md:mx-auto">
+      <div className="mb-8 flex items-center">
+        <img
+          src={user.img}
+          alt={user.name}
+          className="rounded-full h-12 w-12 object-center object-cover mr-2"
+        />
+        <div>
+          <p className="text-gray-900">{user.name}</p>
+          <p className="text-gray-300">{user.phone}</p>
+        </div>
+      </div>
+      <form className="w-full" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name" className="text-gray-300">
             Full Name
           </label>
-          <div className="border rounded flex items-center p-2">
+          <div className="border border-gray-100 rounded flex items-center p-2">
             <User className="h-6 w-6 mr-3" />
             <input
               id="name"
@@ -58,7 +69,7 @@ const Profile = () => {
           <label htmlFor="email" className="text-gray-300">
             Email
           </label>
-          <div className="border rounded flex items-center p-2">
+          <div className="border border-gray-100 rounded flex items-center p-2">
             <Mail className="h-6 w-6 mr-3" />
             <input
               id="email"
@@ -73,7 +84,7 @@ const Profile = () => {
           <label htmlFor="phone" className="text-gray-300">
             Phone
           </label>
-          <div className="border rounded flex items-center p-2">
+          <div className="border border-gray-100 rounded flex items-center p-2">
             <Phone className="h-6 w-6 mr-3" />
             <input
               id="phone"
