@@ -14,8 +14,21 @@ export const UserProvider = ({ children }) => {
     isAvailable: true
   });
 
+  const [navLinks] = useState({
+    driver: [
+      { name: "Sekhrat TODO", path: "/sekhrat-todo" },
+      { name: "My Profile", path: "/profile" },
+      { name: "My Statistics", path: "/statistics" }
+    ],
+    customer: [
+      { name: "My Sekhra", path: "/my-sekhra" },
+      { name: "My Profile", path: "/profile" },
+      { name: "My Adresses", path: "/adresses" }
+    ]
+  });
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, navLinks }}>
       {children}
     </UserContext.Provider>
   );

@@ -7,7 +7,7 @@ import { UserContext } from "../../context/userContext";
 
 const DashboardHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, navLinks } = useContext(UserContext);
 
   function toggle() {
     setIsOpen(!isOpen);
@@ -66,51 +66,25 @@ const DashboardHeader = () => {
                   {user.name}
                 </span>
               </div>
-              {user.role === "driver" ? (
-                <div className="mt-10 flex flex-col">
-                  <NavLink
-                    to="/"
-                    className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
-                  >
-                    Sekhrat TODO
-                  </NavLink>
-                  <NavLink
-                    to="/profile"
-                    className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
-                    activeClassName="bg-white text-black"
-                  >
-                    My Profile
-                  </NavLink>
-                  <NavLink
-                    to="/statistics"
-                    className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
-                  >
-                    Statistics
-                  </NavLink>
-                </div>
-              ) : (
-                <div className="mt-10 flex flex-col">
-                  <NavLink
-                    to="/"
-                    className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
-                  >
-                    My Sekhra
-                  </NavLink>
-                  <NavLink
-                    to="/profile"
-                    className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
-                    activeClassName="bg-white text-black"
-                  >
-                    My Profile
-                  </NavLink>
-                  <NavLink
-                    to="/statistics"
-                    className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
-                  >
-                    My Adresses
-                  </NavLink>
-                </div>
-              )}
+              <div className="mt-10 flex flex-col">
+                {user.role === "driver"
+                  ? navLinks.driver.map(navLink => (
+                      <NavLink
+                        to={navLink.path}
+                        className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
+                      >
+                        {navLink.name}
+                      </NavLink>
+                    ))
+                  : navLinks.customer.map(navLink => (
+                      <NavLink
+                        to={navLink.path}
+                        className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
+                      >
+                        {navLink.name}
+                      </NavLink>
+                    ))}
+              </div>
               {user.role === "driver" ? (
                 <div className="mt-20 px-6 sm:mt-6">
                   <p className="text-white text-lg sm:text-gray-900 sm:text-sm">
