@@ -16,7 +16,7 @@ const Menu = ({ toggle, history }) => {
   }
 
   return (
-    <div className="bg-green h-full w-64 absolute top-0 right-0 shadow-2xl py-6 px-4 sm:mt-20 sm:p-0 sm:bg-transparent sm:shadow-none">
+    <div className="bg-green h-full w-64 absolute z-10 top-0 right-0 shadow-2xl py-6 px-4 sm:mt-20 sm:p-0 sm:bg-transparent sm:shadow-none">
       <div className="relative sm:border sm:border-gray-100 sm:rounded-md sm:bg-white sm:px-6 sm:py-4 sm:shadow-2xl z-50">
         <div className="sm:hidden">
           <button type="button" className="text-white text-xl" onClick={toggle}>

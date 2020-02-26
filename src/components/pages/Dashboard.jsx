@@ -12,7 +12,7 @@ import { UserContext } from "../../context/userContext";
 const Dashboard = () => {
   const { user, navLinks } = useContext(UserContext);
   return (
-    <div className="flex flex-col min-h-screen w-screen">
+    <div className="flex flex-col min-h-screen w-screen overflow-hidden">
       <DashboardHeader />
       <div className="sm:flex px-4 w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md lg:max-w-screen-lg mt-10 ">
         <div className="hidden md:flex md:flex-col">
@@ -57,7 +57,9 @@ const Dashboard = () => {
             <Pen className="fill-current text-white mt-4 h-10 w-10" />
           )}
           <div className="flex justify-between items-center mt-3">
-            <span className="text-sm">Deliver a Sekhra</span>
+            <span className="text-sm">
+              {user.role === "driver" ? "Deliver" : "Request"} a Sekhra
+            </span>
             <Arrow />
           </div>
         </button>

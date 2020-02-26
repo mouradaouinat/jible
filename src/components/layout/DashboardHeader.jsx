@@ -26,13 +26,16 @@ const DashboardHeader = () => {
           <Logo className="h-6 w-auto sm:h-8" />
         </div>
         <div className="flex items-center justify-between">
-          <button
-            type="button"
-            className="mr-4 px-2 py-1"
-            onClick={toggleToast}
-          >
-            <Bell />
-          </button>
+          <div className="flex items-center">
+            <div className="hidden md:block">{isToastOpen && <Toast />}</div>
+            <button
+              type="button"
+              className="mr-4 px-2 py-1"
+              onClick={toggleToast}
+            >
+              <Bell />
+            </button>
+          </div>
           <button type="button" className="p-2 sm:hidden" onClick={toggle}>
             <Burger />
           </button>
@@ -49,7 +52,7 @@ const DashboardHeader = () => {
         </div>
         {isOpen && <Menu toggle={toggle} />}
       </header>
-      {isToastOpen && <Toast />}
+      <div className="md:hidden">{isToastOpen && <Toast />}</div>
       {isOpen && (
         <button
           className="absolute h-screen w-screen inset-0 z-30 cursor-default focus:outline-none"

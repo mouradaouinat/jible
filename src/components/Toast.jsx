@@ -2,22 +2,23 @@ import React from "react";
 
 const Toast = () => {
   return (
-    <div className="w-full px-4 lg:absolute z-50 lg:-mt-14 lg:mr-48 xl:mr-72 lg:w-72 lg:right-0">
-      <div className="border border-gray-100 bg-white mx-auto p-4 lg:py-2 lg:px-3 rounded lg:flex lg:items-center lg:justify-between">
+    <div className="w-full px-4 md:w-72 relative">
+      <div className="border border-gray-100 bg-white mx-auto p-4 md:py-2 md:px-3 rounded md:flex md:items-center md:justify-between">
         <div className="flex justify-between items-center">
-          <p className="lg:text-sm">New Assignment</p>
-          <p className="lg:hidden">2:30min</p>
+          <p className="md:text-sm">New Assignment</p>
+          <p className="md:hidden">2:30min</p>
         </div>
-        <div className="lg:flex lg:justify-between lg:items-center">
-          <button className="text-white bg-green w-full py-3 block mt-3 rounded lg:mt-0 lg:mr-2 lg:px-2 lg:py-0 lg:text-sm">
+        <div className="md:flex md:justify-between md:items-center">
+          <button className="text-white bg-green w-full py-3 block mt-3 rounded md:mt-0 md:mr-2 md:px-2 md:py-0 md:text-sm">
             Accept
           </button>
-          <button className="bg-gray-100 w-full py-3 block rounded mt-2 lg:mt-0 lg:px-2 lg:py-0 lg:mr-2 lg:text-sm">
+          <button className="bg-gray-100 w-full py-3 block rounded mt-2 md:mt-0 md:px-2 md:py-0 md:mr-2 md:text-sm">
             Refuse
           </button>
-          <p className="hidden lg:block lg:text-sm">2:30min</p>
+          <p className="hidden md:block md:text-sm">2:30min</p>
         </div>
       </div>
+      <span className="absolute top-0 right-0 h-4 sm:hidden md:block md:mt-3 md:mr-3 -mt-1 mr-20 -z-10 w-4 bg-gray-100 transform rotate-45"></span>
     </div>
   );
 };
