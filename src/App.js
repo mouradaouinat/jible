@@ -6,9 +6,9 @@ import Dashboard from "./components/pages/Dashboard";
 function App() {
   return (
     <Switch>
-      <Route exact path="/splash" component={LandingPage} />
+      <Route exact path="/home" component={LandingPage} />
       <Route exact path="/:tab" component={Dashboard} />
-      <Redirect to="/profile" />
+      <Redirect to="/home" />
     </Switch>
   );
 }

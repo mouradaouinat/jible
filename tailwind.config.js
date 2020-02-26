@@ -5,7 +5,11 @@ module.exports = {
         "-57": "-202px"
       },
       spacing: {
-        "72": "24rem"
+        "72": "24rem",
+        "14": "3.5rem"
+      },
+      zIndex: {
+        "-10": "-10"
       }
     },
     fontFamily: {
@@ -14,6 +18,7 @@ module.exports = {
       body: ["Ropa Sans", "sans-serif"]
     },
     colors: {
+      transparent: "transparent",
       green: "#419D78",
       white: "#fff",
       black: "#000",
