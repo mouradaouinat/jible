@@ -66,7 +66,7 @@ const Settings = ({ history }) => {
         )}
         <div className="flex justify-between items-center mt-3">
           <span className="text-sm">
-            {user.role === "driver" ? "Deliver" : "Request"} a Sekhra
+            {user.role === "driver" ? "Pick up" : "Request"} a Sekhra
           </span>
           <Arrow />
         </div>

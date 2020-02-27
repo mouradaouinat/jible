@@ -10,8 +10,8 @@ import { ReactComponent as Plus } from "../assets/plus.svg";
 const RequestSekhra = () => {
   return (
     <div className="px-4 w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md lg:max-w-screen-lg mt-10 ">
-      <h1 className="text-2xl">Reaquest a sekhra</h1>
-      <div className="lg:flex justify-between">
+      <h1 className="text-4xl">Request a Sekhra</h1>
+      <div className="lg:flex justify-between mt-6">
         <div className="lg:ml-10 lg:order-last">
           <h3 className="text-sm text-gray-300">Adrress</h3>
           <div className="border border-gray-100 rounded p-2 mt-2">
@@ -70,7 +70,7 @@ const RequestSekhra = () => {
             <input
               type="checkbox"
               name=""
-              className="form-checkbox border-black border-1 w-5 h-5 text-white"
+              className="form-checkbox border-black border-2 w-5 h-5 text-white"
             />
           </div>
           <h3 className="text-sm text-gray-300 mt-4">Schedule</h3>

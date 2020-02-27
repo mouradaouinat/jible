@@ -5,6 +5,7 @@ module.exports = {
         "-57": "-202px"
       },
       spacing: {
+        line: "3px",
         "72": "24rem",
         "14": "3.5rem"
       },
@@ -34,6 +35,8 @@ module.exports = {
       white: "#fff",
       black: "#000",
       gray: {
+        50: "#F8F8F8",
+        80: "#EAEAEA",
         100: "#E5E5E5",
         300: "#909090",
         900: "#242424",
@@ -45,6 +48,8 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    display: ["responsive", "last"]
+  },
   plugins: [require("@tailwindcss/custom-forms")]
 };
