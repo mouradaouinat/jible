@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
 const Toast = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="w-full px-4 md:w-72 relative">
       <div className="border border-gray-100 bg-white mx-auto p-4 md:py-2 md:px-3 rounded md:flex md:items-center md:justify-between">
         <div className="flex justify-between items-center">
-          <p className="md:text-sm">New Assignment</p>
+          <p className="md:text-sm">
+            {user.role === "driver"
+              ? "New Assignment"
+              : "Shared Sekhra request"}
+          </p>
           <p className="md:hidden">2:30min</p>
         </div>
         <div className="md:flex md:justify-between md:items-center">

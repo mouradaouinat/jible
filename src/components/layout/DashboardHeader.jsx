@@ -33,7 +33,10 @@ const DashboardHeader = () => {
               className="mr-4 px-2 py-1"
               onClick={toggleToast}
             >
-              <Bell />
+              <div className="relative">
+                <Bell />
+                <div className="w-2 h-2 rounded-full absolute bg-green top-0 right-0" />
+              </div>
             </button>
           </div>
           <button type="button" className="p-2 sm:hidden" onClick={toggle}>
@@ -55,7 +58,7 @@ const DashboardHeader = () => {
       <div className="md:hidden">{isToastOpen && <Toast />}</div>
       {isOpen && (
         <button
-          className="absolute h-screen w-screen inset-0 z-30 cursor-default focus:outline-none"
+          className="absolute h-screen w-screen inset-0 z-10 cursor-default focus:outline-none"
           onClick={toggle}
         ></button>
       )}
