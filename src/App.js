@@ -7,7 +7,7 @@ function App() {
   return (
     <Switch>
       <Route exact path="/home" component={LandingPage} />
-      <Route exact path="/:tab" component={Dashboard} />
+      <Route path="/dashboard/:setting" component={Dashboard} />
       <Redirect to="/home" />
     </Switch>
   );

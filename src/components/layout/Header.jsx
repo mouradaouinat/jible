@@ -13,7 +13,7 @@ const Header = ({ history }) => {
 
   const login = user => {
     setUser(user);
-    history.push("/profile");
+    history.push("/dashboard/home/");
   };
 
   function toggle() {
