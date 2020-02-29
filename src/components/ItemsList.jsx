@@ -51,8 +51,11 @@ const ItemsList = () => {
           onChange={e => setItem(e.target.value)}
           onKeyDown={e => addItemOnEnter(e)}
         />
-        <button className="absolute inset-y-0 right-0 px-4" onClick={onItemAdd}>
-          <Plus className="h-6 w-6" />
+        <button
+          className="absolute inset-y-0 right-0 px-4 focus:outline-none"
+          onClick={onItemAdd}
+        >
+          <Plus className="h-6 w-6 rounded-full hover:bg-gray-100" />
         </button>
       </div>
       {sekhra.items.map(item => (
@@ -61,8 +64,11 @@ const ItemsList = () => {
           key={item.id}
         >
           <li>{item.value}</li>
-          <button onClick={() => onItemDelete(item.id)}>
-            <Minus className="h-6 w-6" />
+          <button
+            onClick={() => onItemDelete(item.id)}
+            className="rounded-full"
+          >
+            <Minus className="h-6 w-6 hover:bg-red rounded-full" />
           </button>
         </div>
       ))}

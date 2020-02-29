@@ -117,7 +117,14 @@ const Header = ({ history }) => {
                 email: "John@gmail.com",
                 phone: "+212631803625",
                 img:
-                  "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
+                  "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80",
+                addresses: [
+                  {
+                    id: "830f76dc-fbf9-4858-a871-7e8be829a421",
+                    address:
+                      "3416 Tenmile Road, Waltham, Massachusetts, 3 floor"
+                  }
+                ]
               })
             }
             className="bg-blue-dark rounded text-white px-4 py-2 mt-4 w-full flex items-center"

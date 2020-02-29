@@ -10,7 +10,8 @@ export const UserProvider = ({ children }) => {
     email: "John@gmail.com",
     phone: "+212631803625",
     img:
-      "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80"
+      "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80",
+    addresses: []
   });
 
   const [navLinks] = useState({
@@ -22,7 +23,7 @@ export const UserProvider = ({ children }) => {
     customer: [
       { name: "My Sekhra", path: "/dashboard/home/settings/my-sekhra" },
       { name: "My Profile", path: "/dashboard/home/settings/profile" },
-      { name: "My Adresses", path: "/dashboard/home/settings/adresses" }
+      { name: "My Adresses", path: "/dashboard/home/settings/addresses" }
     ]
   });
 
