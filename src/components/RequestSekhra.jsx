@@ -1,11 +1,9 @@
 import React from "react";
+import ItemsList from "./ItemsList";
 import { ReactComponent as File } from "../assets/file.svg";
-import { ReactComponent as Box } from "../assets/box.svg";
 import { ReactComponent as Clock } from "../assets/clock.svg";
 import { ReactComponent as Calendar } from "../assets/calendar.svg";
 import { ReactComponent as Dollar } from "../assets/dollar.svg";
-import { ReactComponent as Minus } from "../assets/minus.svg";
-import { ReactComponent as Plus } from "../assets/plus.svg";
 
 const RequestSekhra = () => {
   return (
@@ -49,31 +47,7 @@ const RequestSekhra = () => {
               placeholder="text here"
             ></textarea>
           </div>
-          <h3 className="text-sm text-gray-300 mt-4">Describe your Sekhra</h3>
-          <div className="relative w-full">
-            <div className="absolute inset-y-0 left-0 pl-4 py-2">
-              <Box className="h-6 w-6 mr-2" />
-            </div>
-            <input
-              type="text"
-              className="border border-gray-100 rounded py-2 px-12 w-full"
-            />
-            <button className="absolute inset-y-0 right-0 px-4">
-              <Plus className="h-6 w-6" />
-            </button>
-          </div>
-          <div className="bg-blue-light rounded text-white px-4 py-2 flex mt-2 justify-between">
-            <li>Some stuff</li>
-            <button>
-              <Minus className="h-6 w-6" />
-            </button>
-          </div>
-          <div className="bg-blue-light rounded text-white px-4 py-2 flex mt-2 justify-between">
-            <li>Some other stuff</li>
-            <button>
-              <Minus className="h-6 w-6" />
-            </button>
-          </div>
+          <ItemsList />
           <h3 className="text-sm text-gray-300 mt-4">Date</h3>
           <div className="mt-3 flex justify-between items-center px-4 py-2 border rounded border-gray-100">
             <div className="flex items-center justify-between">
