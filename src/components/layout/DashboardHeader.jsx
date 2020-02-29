@@ -9,7 +9,7 @@ import Toast from "../Toast";
 const DashboardHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useContext(UserContext);
-  const [isToastOpen, setIsToastOpen] = useState(true);
+  const [isToastOpen, setIsToastOpen] = useState(false);
 
   function toggle() {
     setIsOpen(!isOpen);
