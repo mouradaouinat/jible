@@ -40,6 +40,7 @@ const Menu = ({ toggle, history }) => {
                   key={idx}
                   to={navLink.path}
                   className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
+                  onClick={toggle}
                 >
                   {navLink.name}
                 </NavLink>
@@ -49,6 +50,7 @@ const Menu = ({ toggle, history }) => {
                   key={idx}
                   to={navLink.path}
                   className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
+                  onClick={toggle}
                 >
                   {navLink.name}
                 </NavLink>
