@@ -5,11 +5,14 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { UserProvider } from "./context/userContext";
+import { SekhraProvider } from "./context/sekhraContext";
 
 ReactDOM.render(
   <Router>
     <UserProvider>
-      <App />
+      <SekhraProvider>
+        <App />
+      </SekhraProvider>
     </UserProvider>
   </Router>,
   document.getElementById("root")

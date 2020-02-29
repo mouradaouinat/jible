@@ -12,6 +12,7 @@ import { ReactComponent as Arrow } from "../assets/arrow-white.svg";
 import { ReactComponent as Pen } from "../assets/pen.svg";
 import Statistics from "./Statistics";
 import { UserContext } from "../context/userContext";
+import Adresses from "./Adresses";
 
 const Settings = ({ history }) => {
   const { user, navLinks } = useContext(UserContext);
@@ -48,6 +49,9 @@ const Settings = ({ history }) => {
         <Switch>
           <Route exact path={`${path}/profile`}>
             <Profile />
+          </Route>
+          <Route exact path={`${path}/addresses`}>
+            <Adresses />
           </Route>
           <Route exact path={`${path}/statistics`}>
             <Statistics />

@@ -30,6 +30,7 @@ module.exports = {
       body: ["Ropa Sans", "sans-serif"]
     },
     colors: {
+      red: "#C90000",
       transparent: "transparent",
       green: "#419D78",
       white: "#fff",

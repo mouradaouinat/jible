@@ -23,5 +23,3 @@ export const SekhraProvider = ({ children }) => {
     </SekhraContext.Provider>
   );
 };
-
-export default SekhraProvider;
