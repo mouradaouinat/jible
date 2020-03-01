@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as Phone } from "../assets/phone.svg";
 
 const DeliverSekhra = () => {
+  const [items, setItems] = useState([
+    { id: 1, value: "1KG meat", checked: false },
+    { id: 2, value: "Two cans of beans", checked: false },
+    { id: 3, value: "2KG potatoes", checked: false }
+  ]);
+
+  const [waypoints] = useState([
+    "605 Emmerich Forest Apt. 776",
+    "8674 Jovan Dam",
+    "592 Kessler Roads"
+  ]);
+
+  function onItemChange(id) {
+    setItems(oldItems =>
+      oldItems.map(item =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  }
+
   return (
     <div className="px-4 w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md lg:max-w-screen-lg mt-10">
       <div className="rounded border border-gray-100">
         <h1 className="text-2xl p-4">Shekhra</h1>
         <div className="p-4">
-          <>
-            <div className="flex items-center">
-              <div className="h-3 w-3 bg-gray-300 mr-4 rounded-full"></div>
-              <li className="list-none text-gray-300">
-                605 Emmerich Forest Apt. 776
-              </li>
-            </div>
-            <div className="last:hidden h-12 w-line bg-gray-300 -mt-2 ml-1"></div>
-          </>
-          <>
-            <div className="flex items-center -mt-2">
-              <div className="h-3 w-3 bg-gray-300 mr-4 rounded-full"></div>
-              <li className="list-none text-gray-300">8674 Jovan Dam</li>
-            </div>
-            <div className="last:hidden h-12 w-line bg-gray-300 -mt-3 ml-1"></div>
-          </>
-          <>
-            <div className="flex items-center -mt-2">
-              <div className="h-3 w-3 bg-gray-300 mr-4 rounded-full"></div>
-              <li className="list-none text-gray-300">592 Kessler Roads</li>
-            </div>
-            <div className="last:hidden h-12 w-line bg-gray-300 -mt-2 ml-1"></div>
-          </>
+          {waypoints.map((waypoint, idx) => (
+            <React.Fragment key={idx}>
+              <div className="flex items-center -mt-2">
+                <div className="h-3 w-3 bg-gray-300 mr-4 rounded-full"></div>
+                <li className="list-none text-gray-300">{waypoint}</li>
+              </div>
+              <div className="last:hidden h-12 w-line bg-gray-300 -mt-2 ml-1"></div>
+            </React.Fragment>
+          ))}
         </div>
         <div className="h-full w-full">
           <img
@@ -44,24 +50,20 @@ const DeliverSekhra = () => {
         </div>
         <div className="mt-6 p-2">
           <p>I Need you to super market and bring me this thing quickly</p>
-          <div className="border border-gray-100 rounded px-4 py-2 flex items-center justify-between mt-4">
-            <p>1KG meat</p>
-            <input
-              type="checkbox"
-              name=""
-              id=""
-              className="form-checkbox text-white w-5 h-5 border-black border-2"
-            />
-          </div>
-          <div className="border border-gray-100 rounded px-4 py-2 flex items-center justify-between mt-4">
-            <p>2KG potatoes</p>
-            <input
-              type="checkbox"
-              name=""
-              id=""
-              className="form-checkbox text-white w-5 h-5 border-black border-2"
-            />
-          </div>
+          {items.map(item => (
+            <div
+              className="border border-gray-100 rounded px-4 py-2 flex items-center justify-between mt-4"
+              key={item.id}
+            >
+              <p className={item.checked ? "line-through" : ""}>{item.value}</p>
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => onItemChange(item.id)}
+                className="form-checkbox text-white w-5 h-5 border-black border-2"
+              />
+            </div>
+          ))}
           <div className="rounded border border-gray-80 bg-gray-50 px-6 py-4 flex justify-between items-center mt-6">
             <div className="flex items-center">
               <img
