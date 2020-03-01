@@ -44,14 +44,17 @@ const Profile = () => {
           <label htmlFor="name" className="text-gray-300">
             Full Name
           </label>
-          <div className="border border-gray-100 rounded flex items-center p-2">
-            <User className="h-6 w-6 mr-3" />
+          <div className="relative w-full">
+            <div className="absolute inset-y-0 left-0 pl-2 pt-2">
+              <User className="h-6 w-6 mr-3" />
+            </div>
             <input
               name="name"
+              id="name"
               type="text"
               value={values.name}
               onChange={handleChange}
-              className="text-lg"
+              className="text-lg border border-gray-100 rounded flex items-center pl-10 p-2 w-full"
             />
           </div>
         </div>
@@ -59,14 +62,17 @@ const Profile = () => {
           <label htmlFor="email" className="text-gray-300">
             Email
           </label>
-          <div className="border border-gray-100 rounded flex items-center p-2">
-            <Mail className="h-6 w-6 mr-3" />
+          <div className="relative w-full">
+            <div className="absolute inset-y-0 left-0 pl-2 pt-3">
+              <Mail className="h-6 w-6 mr-3" />
+            </div>
             <input
               type="text"
+              id="email"
               name="email"
               value={values.email}
               onChange={handleChange}
-              className="text-lg"
+              className="text-lg border border-gray-100 rounded flex items-center pl-10 p-2 w-full"
             />
           </div>
         </div>
@@ -74,14 +80,17 @@ const Profile = () => {
           <label htmlFor="phone" className="text-gray-300">
             Phone
           </label>
-          <div className="border border-gray-100 rounded flex items-center p-2">
-            <Phone className="h-6 w-6 mr-3" />
+          <div className="relative w-full">
+            <div className="absolute inset-y-0 left-0 pl-2 pt-2">
+              <Phone className="h-6 w-6 mr-3" />
+            </div>
             <input
               type="text"
+              id="phone"
               name="phone"
               value={values.phone}
               onChange={handleChange}
-              className="text-lg"
+              className="text-lg border border-gray-100 rounded flex items-center pl-10 p-2 w-full"
             />
           </div>
         </div>
