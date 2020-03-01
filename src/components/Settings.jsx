@@ -5,7 +5,8 @@ import {
   Route,
   NavLink,
   Redirect,
-  useRouteMatch
+  useRouteMatch,
+  useHistory
 } from "react-router-dom";
 import { ReactComponent as Helmet } from "../assets/helmet.svg";
 import { ReactComponent as Arrow } from "../assets/arrow-white.svg";
@@ -14,9 +15,10 @@ import Statistics from "./Statistics";
 import { UserContext } from "../context/userContext";
 import Adresses from "./Adresses";
 
-const Settings = ({ history }) => {
+const Settings = () => {
   const { user, navLinks } = useContext(UserContext);
   const { path } = useRouteMatch();
+  const { push } = useHistory();
 
   return (
     <div className="sm:flex px-4 w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md lg:max-w-screen-lg mt-10 ">
@@ -61,7 +63,7 @@ const Settings = ({ history }) => {
       </div>
       <button
         className="hidden sm:block  bg-green text-white h-full w-56 px-3 pt-8 pb-3 text-left rounded-md"
-        onClick={() => history.push("/dashboard/request")}
+        onClick={() => push("/dashboard/request")}
       >
         {user.role === "driver" ? (
           <Helmet className="fill-current text-white mt-4 h-10 w-10" />

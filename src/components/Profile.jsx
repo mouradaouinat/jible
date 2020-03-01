@@ -1,38 +1,28 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { ReactComponent as Phone } from "../assets/phone.svg";
 import { ReactComponent as User } from "../assets/user.svg";
 import { ReactComponent as Mail } from "../assets/mail.svg";
 import { UserContext } from "../context/userContext";
+import { useForm } from "../hooks";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-
-  useEffect(() => {
-    setName(user.name);
-    setEmail(user.email);
-    setPhone(user.phone);
-  }, [user.name, user.phone, user.email]);
-
-  function changeName(e) {
-    setName(e.target.value);
-  }
-
-  function changeEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function changePhone(e) {
-    setPhone(e.target.value);
-  }
+  const [values, handleChange] = useForm({
+    name: user.name,
+    email: user.email,
+    phone: user.phone
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
 
     setUser(previousValue => {
-      return { ...previousValue, name, phone, email };
+      return {
+        ...previousValue,
+        name: values.name,
+        phone: values.phone,
+        email: values.email
+      };
     });
   }
 
@@ -57,10 +47,10 @@ const Profile = () => {
           <div className="border border-gray-100 rounded flex items-center p-2">
             <User className="h-6 w-6 mr-3" />
             <input
-              id="name"
+              name="name"
               type="text"
-              value={name}
-              onChange={changeName}
+              value={values.name}
+              onChange={handleChange}
               className="text-lg"
             />
           </div>
@@ -72,10 +62,10 @@ const Profile = () => {
           <div className="border border-gray-100 rounded flex items-center p-2">
             <Mail className="h-6 w-6 mr-3" />
             <input
-              id="email"
               type="text"
-              value={email}
-              onChange={changeEmail}
+              name="email"
+              value={values.email}
+              onChange={handleChange}
               className="text-lg"
             />
           </div>
@@ -87,10 +77,10 @@ const Profile = () => {
           <div className="border border-gray-100 rounded flex items-center p-2">
             <Phone className="h-6 w-6 mr-3" />
             <input
-              id="phone"
               type="text"
-              value={phone}
-              onChange={changePhone}
+              name="phone"
+              value={values.phone}
+              onChange={handleChange}
               className="text-lg"
             />
           </div>
