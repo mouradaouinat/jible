@@ -2,18 +2,19 @@ import React, { useState, useContext } from "react";
 import hero from "../../assets/jibleecover.png";
 import { ReactComponent as Logo } from "../../assets/logo-white.svg";
 import { ReactComponent as Facebook } from "../../assets/facebook.svg";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Modal from "../Modal";
 import { UserContext } from "../../context/userContext";
 
-const Header = ({ history }) => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const { setUser } = useContext(UserContext);
+  const { push } = useHistory();
 
   const login = user => {
     setUser(user);
-    history.push("/dashboard/home/");
+    push("/dashboard/home/");
   };
 
   function toggle() {
@@ -149,4 +150,4 @@ const Header = ({ history }) => {
   );
 };
 
-export default withRouter(Header);
+export default Header;
