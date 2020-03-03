@@ -2,13 +2,11 @@ import React from "react";
 import { ReactComponent as ReactLogo } from "../../assets/react.svg";
 import { ReactComponent as TailwindLogo } from "../../assets/tailwind.svg";
 import { ReactComponent as ChevronLeft } from "../../assets/chevron-left.svg";
-import { useHistory } from "react-router-dom";
 
-const About = () => {
-  const { goBack } = useHistory();
+const About = ({ navigate }) => {
   return (
     <div className="p-4 mx-auto w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md lg:max-w-screen-lg mt-10">
-      <button onClick={goBack} className="text-blue-light">
+      <button onClick={() => navigate("../")} className="text-blue-light">
         <ChevronLeft className="h-5 w-5 inline mr-2" />
         Back
       </button>

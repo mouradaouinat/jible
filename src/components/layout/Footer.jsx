@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@reach/router";
 import { ReactComponent as Logo } from "../../assets/logo-black.svg";
 
 const Footer = () => {

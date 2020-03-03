@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Router } from "@reach/router";
 import LandingPage from "./components/pages/LandingPage";
-import { Switch, Route, Redirect } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
 import About from "./components/pages/About";
+import Settings from "./components/Settings";
+import RequestSekhra from "./components/RequestSekhra";
+import DeliverSekhra from "./components/DeliverSekhra";
+import { UserContext } from "./context/userContext";
+import Profile from "./components/Profile";
+import Adresses from "./components/Adresses";
+import Statistics from "./components/Statistics";
 
 function App() {
+  const { user } = useContext(UserContext);
   return (
-    <Switch>
-      <Route exact path="/home" component={LandingPage} />
-      <Route exact path="/about" component={About} />
-      <Route path="/dashboard/:setting" component={Dashboard} />
-      <Redirect to="/home" />
-    </Switch>
+    <Router>
+      <LandingPage path="/" />
+      <About path="about" />
+      <Dashboard path="dashboard">
+        {user.role === "customer" ? (
+          <RequestSekhra path="request" />
+        ) : (
+          <DeliverSekhra path="deliver" />
+        )}
+        <Settings path="settings">
+          <Profile path="profile" />
+          <Adresses path="addresses" />
+          <Statistics path="statistics" />
+        </Settings>
+      </Dashboard>
+    </Router>
   );
 }
 
