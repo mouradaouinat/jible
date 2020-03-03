@@ -46,7 +46,7 @@ const Profile = () => {
           </label>
           <div className="relative w-full">
             <div className="absolute inset-y-0 left-0 pl-2 pt-2">
-              <User className="h-6 w-6 mr-3" />
+              <User className="h-6 w-6" />
             </div>
             <input
               name="name"
@@ -64,7 +64,7 @@ const Profile = () => {
           </label>
           <div className="relative w-full">
             <div className="absolute inset-y-0 left-0 pl-2 pt-3">
-              <Mail className="h-6 w-6 mr-3" />
+              <Mail className="h-6 w-6" />
             </div>
             <input
               type="text"
@@ -81,8 +81,8 @@ const Profile = () => {
             Phone
           </label>
           <div className="relative w-full">
-            <div className="absolute inset-y-0 left-0 pl-2 pt-2">
-              <Phone className="h-6 w-6 mr-3" />
+            <div className="absolute inset-y-0 left-0 pl-2 pt-3">
+              <Phone className="h-6 w-6" />
             </div>
             <input
               type="text"
