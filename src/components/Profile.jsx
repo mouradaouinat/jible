@@ -1,29 +1,39 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ReactComponent as Phone } from "../assets/phone.svg";
 import { ReactComponent as User } from "../assets/user.svg";
 import { ReactComponent as Mail } from "../assets/mail.svg";
 import { UserContext } from "../context/userContext";
 import { useForm } from "../hooks";
+import Loading from "../assets/loading.gif";
 
 const Profile = () => {
   const { user, setUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [buttonText, setButtonText] = useState("update");
   const [values, handleChange] = useForm({
     name: user.name,
     email: user.email,
     phone: user.phone
   });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    setUser(previousValue => {
-      return {
-        ...previousValue,
-        name: values.name,
-        phone: values.phone,
-        email: values.email
-      };
-    });
+    setIsLoading(true);
+    await Promise.resolve(
+      setTimeout(() => {
+        setUser(previousValue => {
+          return {
+            ...previousValue,
+            name: values.name,
+            phone: values.phone,
+            email: values.email
+          };
+        });
+        setIsLoading(false);
+        setButtonText("updated!");
+      }, 1000)
+    );
+    setTimeout(() => setButtonText("update"), 2000);
   }
 
   return (
@@ -99,7 +109,11 @@ const Profile = () => {
             type="submit"
             className="px-6 py-3 text-white bg-blue-light w-full rounded mt-6 lg:w-auto lg:px-16 lg:py-2"
           >
-            Update
+            {isLoading === true ? (
+              <img src={Loading} alt="Loading" className="h-6 w-6 mx-auto" />
+            ) : (
+              buttonText
+            )}
           </button>
         </div>
       </form>
