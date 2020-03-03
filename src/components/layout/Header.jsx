@@ -2,19 +2,22 @@ import React, { useState, useContext } from "react";
 import hero from "../../assets/jibleecover.png";
 import { ReactComponent as Logo } from "../../assets/logo-white.svg";
 import { ReactComponent as Facebook } from "../../assets/facebook.svg";
-import { useHistory } from "react-router-dom";
 import Modal from "../Modal";
 import { UserContext } from "../../context/userContext";
+import { navigate } from "@reach/router";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const { setUser } = useContext(UserContext);
-  const { push } = useHistory();
 
   const login = user => {
     setUser(user);
-    push("/dashboard/home/");
+    if (user.role === "customer") {
+      navigate("/dashboard/request");
+    } else {
+      navigate("/dashboard/deliver");
+    }
   };
 
   function toggle() {

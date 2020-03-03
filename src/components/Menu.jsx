@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext";
-import { NavLink, withRouter } from "react-router-dom";
+import { Link, navigate } from "@reach/router";
 
-const Menu = ({ toggle, history }) => {
+const Menu = ({ toggle }) => {
   const { user, setUser, navLinks } = useContext(UserContext);
 
   function onIsAvailableChange() {
@@ -12,7 +12,7 @@ const Menu = ({ toggle, history }) => {
   }
 
   function signOut() {
-    history.push("/");
+    return navigate("/");
   }
 
   return (
@@ -36,24 +36,24 @@ const Menu = ({ toggle, history }) => {
         <div className="mt-10 flex flex-col">
           {user.role === "driver"
             ? navLinks.driver.map((navLink, idx) => (
-                <NavLink
+                <Link
                   key={idx}
                   to={navLink.path}
                   className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
                   onClick={toggle}
                 >
                   {navLink.name}
-                </NavLink>
+                </Link>
               ))
             : navLinks.customer.map((navLink, idx) => (
-                <NavLink
+                <Link
                   key={idx}
                   to={navLink.path}
                   className="text-white py-4 px-6 text-lg hover:bg-white hover:text-black rounded-md sm:text-gray-900 sm:text-sm sm:hover:bg-blue-light sm:hover:text-white"
                   onClick={toggle}
                 >
                   {navLink.name}
-                </NavLink>
+                </Link>
               ))}
         </div>
         {user.role === "driver" ? (
@@ -90,4 +90,4 @@ const Menu = ({ toggle, history }) => {
   );
 };
 
-export default withRouter(Menu);
+export default Menu;

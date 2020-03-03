@@ -16,14 +16,14 @@ export const UserProvider = ({ children }) => {
 
   const [navLinks] = useState({
     driver: [
-      { name: "Sekhrat TODO", path: "/dashboard/home/settings/sekhrat-todo" },
-      { name: "My Profile", path: "/dashboard/home/settings/profile" },
-      { name: "My Statistics", path: "/dashboard/home/settings/statistics" }
+      { name: "Sekhrat TODO", path: "/dashboard/settings/sekhrat-todo" },
+      { name: "My Profile", path: "/dashboard/settings/profile" },
+      { name: "My Statistics", path: "/dashboard/settings/statistics" }
     ],
     customer: [
-      { name: "My Sekhra", path: "/dashboard/home/settings/my-sekhra" },
-      { name: "My Profile", path: "/dashboard/home/settings/profile" },
-      { name: "My Adresses", path: "/dashboard/home/settings/addresses" }
+      { name: "My Sekhra", path: "/dashboard/settings/my-sekhra" },
+      { name: "My Profile", path: "/dashboard/settings/profile" },
+      { name: "My Adresses", path: "/dashboard/settings/addresses" }
     ]
   });
 
