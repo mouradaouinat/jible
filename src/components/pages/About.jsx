@@ -3,10 +3,10 @@ import { ReactComponent as ReactLogo } from "../../assets/react.svg";
 import { ReactComponent as TailwindLogo } from "../../assets/tailwind.svg";
 import { ReactComponent as ChevronLeft } from "../../assets/chevron-left.svg";
 
-const About = ({ navigate }) => {
+const About = () => {
   return (
     <div className="p-4 mx-auto w-screen sm:max-w-screen-sm sm:mx-auto md:max-w-screen-md lg:max-w-screen-lg mt-10">
-      <button onClick={() => navigate("../")} className="text-blue-light">
+      <button onClick={() => window.history.back()} className="text-blue-light">
         <ChevronLeft className="h-5 w-5 inline mr-2" />
         Back
       </button>
