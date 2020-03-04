@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
+import { OpenStreetMapProvider } from "leaflet-geosearch";
 import Modal from "./Modal";
+import Map from "./Map";
 import { UserContext } from "../context/userContext";
 import { v4 as uuid } from "uuid";
 import { ReactComponent as Trash } from "../assets/trash.svg";
@@ -11,6 +13,9 @@ const Adresses = () => {
   const [address, setAdress] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [addressId, setAddressId] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [position, setPosition] = useState([]);
+  const provider = new OpenStreetMapProvider();
 
   function toggle() {
     setIsOpen(!isOpen);
@@ -28,10 +33,11 @@ const Adresses = () => {
     setUser(oldUser => {
       return {
         ...oldUser,
-        addresses: [{ id: uuid(), address }, ...oldUser.addresses]
+        addresses: [{ id: uuid(), address, position }, ...oldUser.addresses]
       };
     });
     setAdress("");
+    setPosition([]);
   }
 
   function addAddressOnEnter(e) {
@@ -50,6 +56,12 @@ const Adresses = () => {
     toggle();
   }
 
+  async function search(input) {
+    setAdress(input);
+    const results = await provider.search({ query: input });
+    setSuggestions(results);
+  }
+
   return (
     <div>
       <h3>Add Address</h3>
@@ -59,14 +71,30 @@ const Adresses = () => {
         </div>
         <input
           type="text"
-          className="rounded border border-gray-100 pl-10 w-full py-2"
+          className="rounded border border-gray-100 px-10 w-full py-2"
           value={address}
-          onChange={e => setAdress(e.target.value)}
+          onChange={e => search(e.target.value)}
           onKeyDown={addAddressOnEnter}
         />
         <button className="absolute inset-y-0 right-0 px-2" onClick={addAdress}>
           <Plus className="w-5 h-5" />
         </button>
+        <div className="absolute top-0 left-0 mt-12 bg-white rounded border border-gray-100 overflow-hidden shadow z-1000">
+          {suggestions &&
+            suggestions.map((s, idx) => (
+              <li
+                key={idx}
+                className="text-xs list-none p-2 border-b border-gray-100 cursor-pointer hover:bg-blue-light hover:text-white z-1000"
+                onClick={() => {
+                  setAdress(s.label);
+                  setSuggestions([]);
+                  setPosition([parseFloat(s.y), parseFloat(s.x)]);
+                }}
+              >
+                {s.label}
+              </li>
+            ))}
+        </div>
       </div>
       {user.addresses.length === 0 ? (
         <div className="mt-4">
@@ -80,7 +108,7 @@ const Adresses = () => {
               <div className="flex items-center">
                 <Pin className="w-5 h-5 mr-2" />
                 <p className="text-gray-300 text-xs lg:text-sm">
-                  {address.address}
+                  {address.address.substr(0, 50).concat("...")}
                 </p>
               </div>
               <button onClick={() => confirmDelete(address.id)}>
@@ -88,11 +116,7 @@ const Adresses = () => {
               </button>
             </div>
             <div className="rounded overflow-hidden mt-2">
-              <img
-                src="https://www.google.com/maps/d/thumbnail?mid=1l4Clf7zV6PiFP7rAK0ML9Em8vTg&hl=en"
-                alt="map"
-                className="w-full h-24 object-cover object-center"
-              />
+              <Map position={address.position} address={address.address} />
             </div>
           </div>
         ))
