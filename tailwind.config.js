@@ -10,7 +10,8 @@ module.exports = {
         "14": "3.5rem"
       },
       zIndex: {
-        "-10": "-10"
+        "-10": "-10",
+        "1000": "1000"
       }
     },
     customForms: theme => ({

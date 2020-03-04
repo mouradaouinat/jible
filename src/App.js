@@ -10,6 +10,7 @@ import { UserContext } from "./context/userContext";
 import Profile from "./components/Profile";
 import Adresses from "./components/Adresses";
 import Statistics from "./components/Statistics";
+import MySekhra from "./components/MySekhra";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -27,6 +28,7 @@ function App() {
           <Profile path="profile" />
           <Adresses path="addresses" />
           <Statistics path="statistics" />
+          <MySekhra path="my-sekhra" />
         </Settings>
       </Dashboard>
     </Router>

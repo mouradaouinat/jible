@@ -14,8 +14,8 @@ const Modal = ({ toggle, children }) => {
   });
 
   return (
-    <div className="fixed inset-0 z-20 px-5 flex flex-col justify-center items-center">
-      <div className="rounded bg-white mx-auto relative px-10 z-40">
+    <div className="fixed inset-0 z-1000 px-5 flex flex-col justify-center items-center">
+      <div className="rounded bg-white mx-auto relative px-10 z-1000">
         <button
           onClick={toggle}
           type="button"
